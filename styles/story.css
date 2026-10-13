@@ -1,0 +1,162 @@
+/**
+ * FireFork - Story Page Styles
+ */
+
+.page-hero {
+    background-color: var(--brand-dark);
+    padding: 120px 0 80px 0;
+    color: white;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-family: 'Caesar Dressing';
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.page-hero p {
+    font-family: 'Rowan';
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1px;
+}
+
+.section-divider {
+    width: 80px;
+    height: 4px;
+    background-color: var(--brand-orange);
+    margin: 0 auto 60px auto;
+}
+
+body.veg-mode .section-divider { background-color: var(--brand-green); }
+
+.master-chef-row {
+    padding: 80px 0;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.5s ease;
+}
+
+.master-chef-row:nth-child(even) {
+    background-color: var(--bg-light);
+}
+
+.chef-image-frame {
+    position: relative;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,0.1);
+    transition: border-color 0.3s ease;
+}
+
+.chef-image-frame::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px;
+    width: 100%; height: 100%;
+    border: 1px solid var(--brand-orange);
+    z-index: -1;
+    transition: border-color 0.3s ease;
+}
+
+body.veg-mode .chef-image-frame::before { border-color: var(--brand-green); }
+
+.chef-role-badge {
+    display: inline-block;
+    background: var(--brand-orange);
+    color: white;
+    padding: 5px 15px;
+    font-family: 'Rowan';
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+body.veg-mode .chef-role-badge { background: var(--brand-green); }
+
+.master-quote {
+    font-family: 'Caesar Dressing';
+    font-size: 1.5rem;
+    color: #555;
+    border-left: 3px solid var(--brand-orange);
+    padding-left: 20px;
+    margin: 30px 0;
+    font-style: italic;
+}
+
+body.veg-mode .master-quote { border-color: var(--brand-green); }
+
+.brigade-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+}
+
+.brigade-intro h2 {
+    font-family: 'Caesar Dressing';
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.chef-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.junior-chef-card {
+    background: white;
+    border: 1px solid #eee;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.junior-chef-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.junior-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.junior-chef-card:hover .junior-img {
+    filter: grayscale(0%);
+}
+
+.junior-role {
+    font-family: 'Rowan';
+    font-weight: 700;
+    color: var(--brand-dark);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.junior-name {
+    font-family: 'Inter';
+    font-size: 0.9rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+footer {
+    background: var(--brand-dark);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .master-chef-row { padding: 40px 0; }
+    .chef-image-frame { margin-bottom: 30px; }
+    .page-hero h1 { font-size: 2.5rem; }
+}

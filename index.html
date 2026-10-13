@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireFork | Where Flame Meets Flavor</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&family=Inter:wght@300;400;700&family=Outfit:wght@400;600;700&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/home.css">
+</head>
+<body>
+
+    <!-- Cursor Image Preview Element -->
+    <div id="cursor-image-preview"></div>
+
+    <div id="navbar-placeholder"></div>
+
+    <section class="hero-section" id="home">
+        <img src="assets/images/food/flameBG.png" class="hero-bg hero-bg-nonveg" id="hero-bg-nonveg" alt="FireFork Flames">
+        <img src="assets/images/food/flameVEG_BG.png" class="hero-bg hero-bg-veg" id="hero-bg-veg" alt="FireFork Flames" style="opacity: 0;">
+        
+        <!-- Non-Veg Floating Images -->
+        <img src="assets/images/food/chicken.png" class="floating-food food-chicken non-veg-item" alt="Chicken">
+        <img src="assets/images/food/beef.png" class="floating-food food-beef non-veg-item" alt="Beef">
+        <img src="assets/images/food/pork.png" class="floating-food food-pork non-veg-item" alt="Pork">
+        
+        <!-- Veg Floating Images (Hidden by default) -->
+        <img src="assets/images/food/salad.png" class="floating-food food-salad veg-item hidden" alt="Salad">
+        <img src="assets/images/food/sandwitch.png" class="floating-food food-sandwich veg-item hidden" alt="Sandwich">
+        <img src="assets/images/food/tomato.png" class="floating-food food-tomato veg-item hidden" alt="Tomato">
+        
+        <div class="hero-content p-5">
+            <h1 class="hero-title" id="hero-tagline">WHERE FIRE <br> MEETS MEAT</h1>
+        </div>
+        
+        <div class="sub-hero">
+            <p class="sub-hero-text">
+                Experience the perfect harmony of flame-kissed flavors and culinary artistry. 
+                Every dish is a celebration of bold tastes, crafted with passion and served with soul.
+            </p>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section class="menu-section" id="menu">
+        <div class="menu-flame-top"></div>
+        <div class="container">
+            
+            <!-- Non-Veg Menu Content -->
+            <div id="non-veg-menu" class="menu-container active">
+                <h2 class="menu-header">FORGED IN FLAME</h2>
+                
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3 class="menu-category-label">Starters & Small Plates</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/Bone Marrow Brulée.png">Bone Marrow Brulée</div>
+                            <p class="menu-item-desc">Roasted marrow with a chili-garlic crust, served with sourdough crostini.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/Lamb Riblets.png">Lamb Riblets</div>
+                            <p class="menu-item-desc">Slow-cooked for 12 hours, glazed in a spicy tamarind and jaggery reduction.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/Charred Octopus.png">Charred Octopus</div>
+                            <p class="menu-item-desc">Wood-fired with chorizo butter and a chickpea purée.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="menu-category-label">Mains</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/The Signature Tenderloin (Buff).png">The Signature Tenderloin (Buff)</div>
+                            <p class="menu-item-desc">21-day dry-aged, grass-fed. Served with roasted garlic.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/Dukkah-Crusted Lamb Rack.png">Dukkah-Crusted Lamb Rack</div>
+                            <p class="menu-item-desc">New Zealand lamb chops with a Middle Eastern spice crust and mint jus.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/Smoked Spatchcock Chicken.png">Smoked Spatchcock Chicken</div>
+                            <p class="menu-item-desc">Half a bird marinated in peri-peri and rosemary, finished over charcoal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Veg Menu Content -->
+            <div id="veg-menu" class="menu-container">
+                <h2 class="menu-header">EMBERED EARTH</h2>
+                
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3 class="menu-category-label">Starters & Small Plates</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/Smoked Burrata.png">Charred Halloumi Skewers</div>
+                            <p class="menu-item-desc">Grilled halloumi with lemon-herb glaze, blistered cherry tomatoes, and za’atar flatbread.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/Truffle Mushroom Pâté.png">Smoky Eggplant & Harissa Dip</div>
+                            <p class="menu-item-desc">Fire-roasted eggplant blended with North African spices, served with warm pita crisps.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/Hearth-Roasted Asparagus.png">Crispy Lotus Root Chips</div>
+                            <p class="menu-item-desc">Lightly battered and flash-fried, dusted with smoked paprika and sea salt.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="menu-category-label">Mains</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/The King Oyster Steak.png">The King Oyster Steak</div>
+                            <p class="menu-item-desc">Thick-cut mushroom "scallops" pan-seared in garlic butter and thyme.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/Tandoori Portobello Slab.png">Tandoori Portobello Slab</div>
+                            <p class="menu-item-desc">Large grilled mushrooms stuffed with herbed goat cheese.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-title" data-img="assets/images/food/Cauliflower Steak (The OG).png">Cauliflower "Steak" (The OG)</div>
+                            <p class="menu-item-desc">A cross-section of cauliflower, charred and served over a bed of romesco sauce.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- OUR CHEFS SECTION -->
+    <section class="chefs-section" id="chefs">
+        <div class="chefs-flame-top"></div>
+        <div class="container">
+            <h2 class="font-caesar text-center mb-5" style="font-size: 3.5rem; color: white;">THE MASTERS</h2>
+            <div class="chefs-grid">
+                <!-- Chef 1 -->
+                <div class="chef-pill chef-pill-1">
+                    <div class="chef-info">
+                        <h3 class="chef-name">ARSALAN <br> MEWATI</h3>
+                        <span class="chef-role">Pitmaster & Founder</span>
+                    </div>
+                    <img src="assets/images/chefs/arslan.png" alt="Chef Arsalan" class="chef-img">
+                </div>
+                <!-- Chef 2 -->
+                <div class="chef-pill chef-pill-2">
+                    <div class="chef-info">
+                        <h3 class="chef-name">RUSHAN <br> MANSURI</h3>
+                        <span class="chef-role">Executive Chef</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?q=80&w=600&auto=format&fit=crop" alt="Chef Rushan" class="chef-img">
+                </div>
+                <!-- Chef 3 -->
+                <div class="chef-pill chef-pill-3">
+                    <div class="chef-info">
+                        <h3 class="chef-name">AHMAD <br> SURTI</h3>
+                        <span class="chef-role">Saucier Expert</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=600&auto=format&fit=crop" alt="Chef Ahmad" class="chef-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="testimonials-flame-top"></div>
+        <div class="container">
+            <h2 class="font-caesar text-center mb-5" style="font-size: 3.5rem; color: var(--brand-dark);">WHAT THEY SAY</h2>
+            
+            <div class="testimonials-grid">
+                <!-- Card 1 - Tall Light -->
+                <div class="testimonial-card light tall">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"FireFork has been a game-changer for our dining experiences. Their flame-kissed flavors are absolutely incredible and the team is incredibly responsive."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Marcus Chen</h4>
+                                <p>Food Critic</p>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=200&auto=format&fit=crop" alt="Marcus Chen" class="author-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 - Short Primary -->
+                <div class="testimonial-card primary">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"We've seen incredible results with FireFork. Their expertise and dedication to quality is unmatched."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Sarah Miller</h4>
+                                <p>Restaurant Owner</p>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?q=80&w=200&auto=format&fit=crop" alt="Sarah Miller" class="author-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 - Short Dark -->
+                <div class="testimonial-card dark">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Their team is highly professional, and their innovative solutions have truly transformed the way we dine."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>James Wilson</h4>
+                                <p>Executive Chef</p>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=200&auto=format&fit=crop" alt="James Wilson" class="author-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 4 - Short Dark -->
+                <div class="testimonial-card dark">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"We're extremely satisfied with FireFork. Their expertise and dedication have exceeded our expectations."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Emily Rodriguez</h4>
+                                <p>Food Blogger</p>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=200&auto=format&fit=crop" alt="Emily Rodriguez" class="author-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 5 - Short Dark -->
+                <div class="testimonial-card dark">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Their customer support is absolutely exceptional. They are always available and incredibly helpful."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>David Park</h4>
+                                <p>Regular Guest</p>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1740102074295-c13fae3e4f8a?q=80&w=200&auto=format&fit=crop" alt="David Park" class="author-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 6 - Short Primary -->
+                <div class="testimonial-card primary">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"FireFork has been a key partner in our culinary journey."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Lisa Thompson</h4>
+                                <p>Event Planner</p>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1563237023-b1e970526dcb?q=80&w=200&auto=format&fit=crop" alt="Lisa Thompson" class="author-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 7 - Wide Light -->
+                <div class="testimonial-card light wide">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"FireFork has been a true game-changer for us. Their exceptional service, combined with their deep expertise and commitment to excellence, has made a significant impact on our business."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Robert Anderson</h4>
+                                <p>Restaurant Group CEO</p>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1590086782957-93c06ef21604?q=80&w=200&auto=format&fit=crop" alt="Robert Anderson" class="author-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/components.js"></script>
+    <script src="scripts/common.js" defer></script>
+    <script src="scripts/home.js" defer></script>
+</body>
+</html>

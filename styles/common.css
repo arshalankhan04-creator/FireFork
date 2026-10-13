@@ -1,0 +1,486 @@
+/**
+ * FireFork - Shared/Common CSS
+ * Extracted from index.html, menu.html, story.html, experience.html
+ */
+
+/* =========================================
+   DESIGN SYSTEM VARIABLES
+   ========================================= */
+:root {
+    --brand-orange: #FF3500;
+    --brand-dark: #35161B;
+    --brand-white: #FCFCFC;
+    --brand-green: #22C55E;
+    --brand-gray: #F3F4F6;
+    --bg-light: #F4F4F4;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+}
+
+/* =========================================
+   BASE TYPOGRAPHY
+   ========================================= */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--brand-white);
+    color: var(--brand-dark);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Rowan Font Family */
+@font-face {
+    font-family: 'Rowan';
+    src: url('../assets/fonts/Rowan_Complete/Fonts/WEB/fonts/Rowan-Regular.woff2') format('woff2'),
+         url('../assets/fonts/Rowan_Complete/Fonts/WEB/fonts/Rowan-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rowan';
+    src: url('../assets/fonts/Rowan_Complete/Fonts/WEB/fonts/Rowan-Medium.woff2') format('woff2'),
+         url('../assets/fonts/Rowan_Complete/Fonts/WEB/fonts/Rowan-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+.font-caesar { font-family: 'Caesar Dressing', cursive; }
+.font-rowan { font-family: 'Rowan', sans-serif; }
+
+/* =========================================
+   UTILITY CLASSES
+   ========================================= */
+.text-brand-orange { color: var(--brand-orange); }
+.text-brand-dark { color: var(--brand-dark); }
+.text-brand-green { color: var(--brand-green); }
+.bg-brand-dark { background-color: var(--brand-dark); }
+.bg-brand-orange { background-color: var(--brand-orange); }
+.bg-brand-green { background-color: var(--brand-green); }
+.transition-all { transition: all 0.3s ease; }
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+.navbar {
+    background-color: rgba(252, 252, 252, 0.98);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 0;
+}
+
+.nav-link {
+    font-weight: 800;
+    color: var(--brand-dark) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    position: relative;
+    display: inline-block;
+    opacity: 0.4;
+}
+
+.nav-link.active {
+    opacity: 1;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--brand-orange);
+    transition: width 0.4s ease;
+}
+
+body.veg-mode .nav-link::after { background-color: var(--brand-green); }
+
+.nav-link:hover::after { width: 100%; }
+
+.nav-link:hover {
+    color: var(--brand-orange) !important;
+    opacity: 1;
+}
+
+body.veg-mode .nav-link:hover { color: var(--brand-green) !important; }
+
+/* =========================================
+   TOGGLE SWITCH (Veg/Non-Veg)
+   ========================================= */
+.toggle-container {
+    width: 140px;
+    height: 38px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#toggle-slider {
+    position: absolute;
+    width: 68px;
+    height: 30px;
+    background-color: var(--brand-orange);
+    border-radius: 999px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .toggle-container { width: 50px; height: 28px; }
+    #toggle-slider { width: 20px; height: 20px; }
+    .toggle-text { display: none; }
+}
+
+/* =========================================
+   CTA BUTTON
+   ========================================= */
+.cta-button {
+    background-color: var(--brand-dark);
+    color: white !important;
+    border-radius: 999px;
+    padding: 10px 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(53, 22, 27, 0.3);
+}
+
+/* =========================================
+   FLAME SEPARATORS
+   ========================================= */
+.flame-separator {
+    width: 100%;
+    height: 30px;
+    background-color: #35161B;
+    clip-path: polygon(0% 100%, 5% 60%, 10% 90%, 15% 40%, 20% 80%, 25% 20%, 30% 70%, 35% 10%, 40% 60%, 45% 0%, 50% 50%, 55% 0%, 60% 60%, 65% 10%, 70% 70%, 75% 20%, 80% 80%, 85% 40%, 90% 90%, 95% 60%, 100% 100%);
+    transition: background-color 0.5s ease;
+}
+
+.flame-separator-top {
+    width: 100%;
+    height: 30px;
+    background-color: #35161B;
+    clip-path: polygon(0% 0%, 5% 40%, 10% 10%, 15% 60%, 20% 20%, 25% 80%, 30% 30%, 35% 90%, 40% 40%, 45% 100%, 50% 50%, 55% 100%, 60% 40%, 65% 90%, 70% 30%, 75% 80%, 80% 20%, 85% 60%, 90% 10%, 95% 40%, 100% 0%);
+    transition: background-color 0.5s ease;
+}
+
+.flame-separator-middle {
+    width: 100%;
+    height: 30px;
+    background-color: var(--brand-orange);
+    clip-path: polygon(0% 100%, 5% 60%, 10% 90%, 15% 40%, 20% 80%, 25% 20%, 30% 70%, 35% 10%, 40% 60%, 45% 0%, 50% 50%, 55% 0%, 60% 60%, 65% 10%, 70% 70%, 75% 20%, 80% 80%, 85% 40%, 90% 90%, 95% 60%, 100% 100%);
+    transition: background-color 0.5s ease;
+}
+
+body.veg-mode .flame-separator-middle { background-color: var(--brand-green); }
+
+/* =========================================
+   CURSOR IMAGE PREVIEW (Menu hover)
+   ========================================= */
+#cursor-image-preview {
+    position: fixed;
+    width: 280px;
+    aspect-ratio: 16/9;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: scale(0.8) translate(-50%, -110%);
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    background-size: cover;
+    background-position: center;
+    border: 4px solid white;
+}
+
+#cursor-image-preview.visible {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -110%);
+}
+
+/* =========================================
+   FIREFORK FOOTER
+   ========================================= */
+.firefork-footer {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0d0d0d 0%, var(--brand-dark) 100%);
+    color: var(--brand-white);
+    padding: 3rem 0 1.5rem 0;
+    margin-top: 0;
+    position: relative;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.footer-brand {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-logo {
+    font-family: 'Caesar Dressing', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--brand-white);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-logo:hover {
+    color: var(--brand-orange);
+}
+
+.footer-logo-icon {
+    color: var(--brand-orange);
+    font-size: 1.8rem;
+    animation: flame-flicker 2s ease-in-out infinite;
+}
+
+@keyframes flame-flicker {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.footer-tagline {
+    color: #666666;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    max-width: 400px;
+}
+
+.diet-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.diet-veg {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--brand-green);
+    border: 1px solid var(--brand-green);
+}
+
+.diet-nonveg {
+    background: rgba(220, 38, 38, 0.15);
+    color: #dc2626;
+    border: 1px solid #dc2626;
+}
+
+.diet-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.diet-veg .diet-dot {
+    background: var(--brand-green);
+}
+
+.diet-nonveg .diet-dot {
+    background: #dc2626;
+}
+
+.footer-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.footer-nav-section h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #666666;
+    margin-bottom: 1rem;
+}
+
+.footer-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav-links a {
+    color: var(--brand-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-nav-links a:hover {
+    color: var(--brand-orange);
+    transform: translateX(5px);
+}
+
+.footer-nav-links a.coming-soon {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.coming-soon-badge {
+    background: rgba(255,255,255,0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    transform: rotate(-3deg);
+}
+
+.footer-bottom {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-copyright {
+    color: #666666;
+    font-size: 0.85rem;
+}
+
+.footer-legal-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-legal-links a {
+    color: #666666;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.footer-legal-links a:hover {
+    color: var(--brand-orange);
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    color: var(--brand-white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.footer-social a:hover {
+    background: var(--brand-orange);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.fire-hover-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.fire-hover-effect::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand-orange), #FF6B35);
+    transition: width 0.3s ease;
+}
+
+.fire-hover-effect:hover::before {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .firefork-footer {
+        padding: 2rem 0 1rem 0;
+    }
+
+    .footer-brand {
+        text-align: center;
+    }
+
+    .footer-tagline {
+        margin: 0.5rem auto 0;
+    }
+
+    .footer-nav {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-legal-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-logo {
+        font-size: 1.5rem;
+    }
+}

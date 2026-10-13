@@ -1,0 +1,393 @@
+/**
+ * FireFork - Reservation Form Styles
+ */
+
+.form-section {
+    background: linear-gradient(135deg, #0b0b0f 0%, #1a1a24 100%);
+    min-height: 100vh;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(1200px 800px at 15% 10%, rgba(255, 53, 0, 0.15), transparent 60%),
+        radial-gradient(900px 600px at 90% 20%, rgba(34, 197, 94, 0.1), transparent 55%);
+    pointer-events: none;
+}
+
+body.veg-mode .form-section::before {
+    background: 
+        radial-gradient(1200px 800px at 15% 10%, rgba(34, 197, 94, 0.15), transparent 60%),
+        radial-gradient(900px 600px at 90% 20%, rgba(34, 197, 94, 0.1), transparent 55%);
+}
+
+.form-flame-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: var(--brand-orange);
+    clip-path: polygon(0% 0%, 5% 40%, 10% 10%, 15% 60%, 20% 20%, 25% 80%, 30% 30%, 35% 90%, 40% 40%, 45% 100%, 50% 50%, 55% 100%, 60% 40%, 65% 90%, 70% 30%, 75% 80%, 80% 20%, 85% 60%, 90% 10%, 95% 40%, 100% 0%);
+    transition: background-color 0.5s ease;
+    z-index: 1;
+}
+
+body.veg-mode .form-flame-top {
+    background: var(--brand-green);
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(20, 20, 28, 0.85);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-title {
+    font-family: 'Caesar Dressing', cursive;
+    font-size: 3rem;
+    color: var(--brand-orange);
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    transition: color 0.5s ease;
+}
+
+body.veg-mode .form-title {
+    color: var(--brand-green);
+}
+
+@media (max-width: 768px) {
+    .form-title {
+        font-size: 2rem;
+    }
+}
+
+.form-subtitle {
+    font-family: 'Rowan', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+.booking-form {
+    margin-top: 30px;
+}
+
+.form-label {
+    font-family: 'Rowan', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.form-label i {
+    color: var(--brand-orange);
+    transition: color 0.5s ease;
+}
+
+body.veg-mode .form-label i {
+    color: var(--brand-green);
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-family: 'Rowan', sans-serif;
+    font-size: 1rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--brand-orange);
+    box-shadow: 0 0 0 3px rgba(255, 53, 0, 0.2);
+    outline: none;
+    color: white;
+}
+
+body.veg-mode .form-control:focus {
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+.form-control option {
+    background: #1a1a24;
+    color: white;
+}
+
+.form-text {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 6px;
+}
+
+.submit-button {
+    width: 100%;
+    background: linear-gradient(135deg, var(--brand-orange) 0%, #ff6b35 100%);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 18px 32px;
+    font-family: 'Rowan', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.submit-button:hover::before {
+    left: 100%;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 53, 0, 0.4);
+}
+
+.submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+body.veg-mode .submit-button {
+    background: linear-gradient(135deg, var(--brand-green) 0%, #16a34a 100%);
+}
+
+body.veg-mode .submit-button:hover {
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+}
+
+.btn-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Availability Indicator */
+.availability-indicator {
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    font-family: 'Rowan', sans-serif;
+    transition: all 0.3s ease;
+    animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.availability-indicator.available {
+    background: rgba(34, 197, 94, 0.15);
+    border: 2px solid rgba(34, 197, 94, 0.5);
+}
+
+.availability-indicator.limited {
+    background: rgba(251, 191, 36, 0.15);
+    border: 2px solid rgba(251, 191, 36, 0.5);
+}
+
+.availability-indicator.unavailable {
+    background: rgba(239, 68, 68, 0.15);
+    border: 2px solid rgba(239, 68, 68, 0.5);
+}
+
+.availability-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.availability-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.availability-indicator.available .availability-icon {
+    color: #22C55E;
+}
+
+.availability-indicator.limited .availability-icon {
+    color: #fbbf24;
+}
+
+.availability-indicator.unavailable .availability-icon {
+    color: #ef4444;
+}
+
+.availability-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.availability-indicator.available .availability-title {
+    color: #22C55E;
+}
+
+.availability-indicator.limited .availability-title {
+    color: #fbbf24;
+}
+
+.availability-indicator.unavailable .availability-title {
+    color: #ef4444;
+}
+
+.availability-subtitle {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+
+/* Alert Messages */
+.alert-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 30px;
+    font-family: 'Rowan', sans-serif;
+    animation: slideDown 0.4s ease;
+}
+
+.alert-message i {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.success-message {
+    background: rgba(34, 197, 94, 0.15);
+    border: 2px solid rgba(34, 197, 94, 0.5);
+    color: #22C55E;
+}
+
+.success-message strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.success-message p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.error-message {
+    background: rgba(239, 68, 68, 0.15);
+    border: 2px solid rgba(239, 68, 68, 0.5);
+    color: #ef4444;
+}
+
+.error-message strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.error-message p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Loading State */
+.form-control.loading {
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    position: relative;
+}
+
+.form-control.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--brand-orange);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    transform: translateY(-50%);
+}
+
+@keyframes spin {
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .form-section {
+        padding: 60px 0;
+    }
+    
+    .availability-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .availability-icon {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FireFork | POS System</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&family=Inter:wght@300;400;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/pos.css">
+</head>
+<body>
+
+  <!-- PIN Authentication Modal -->
+  <div class="modal fade" id="pinModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center p-5">
+          <i class="bi bi-shield-lock-fill text-brand-orange" style="font-size: 3rem;"></i>
+          <h3 class="font-caesar mt-3 mb-4">STAFF ACCESS</h3>
+          <input type="password" id="pin-input" class="form-control form-control-lg text-center" 
+                 placeholder="Enter PIN" maxlength="4" autocomplete="off">
+          <button class="btn btn-dark w-100 mt-3" onclick="verifyPin()">UNLOCK</button>
+          <div id="pin-error" class="text-danger mt-2 d-none">Invalid PIN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main POS Interface -->
+  <div id="pos-interface" class="d-none">
+    
+    <!-- Header -->
+    <header class="pos-header">
+      <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center gap-3">
+            <img src="assets/images/icons/iconCRUVE.png" alt="FireFork" style="height: 40px; border-radius: 30%;">
+            <h1 class="font-caesar mb-0" style="font-size: 1.5rem;">FIREFORK POS</h1>
+          </div>
+          <div class="d-flex gap-3 align-items-center">
+            <span id="current-datetime" class="text-muted"></span>
+            <button class="btn btn-outline-danger btn-sm" onclick="logout()">
+              <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Date/Time Filter -->
+    <section class="filter-section">
+      <div class="container-fluid">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label class="form-label fw-bold">Date</label>
+            <input type="date" id="filter-date" class="form-control">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label fw-bold">Time Slot</label>
+            <select id="filter-time" class="form-select">
+              <option value="">All Time Slots</option>
+            </select>
+          </div>
+          <div class="col-md-4 d-flex align-items-end">
+            <button class="btn btn-brand-orange w-100" onclick="loadTables()">
+              <i class="bi bi-arrow-clockwise"></i> Refresh Tables
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+      <div class="row">
+        
+        <!-- Left: Table Cards -->
+        <div class="col-lg-8">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="font-rowan fw-bold mb-0">Tables</h2>
+            <div id="table-stats" class="text-muted"></div>
+          </div>
+          <div id="tables-grid" class="tables-grid">
+            <!-- Table cards will be injected here -->
+          </div>
+        </div>
+
+        <!-- Right: Order Panel -->
+        <div class="col-lg-4">
+          <div class="order-panel">
+            <div class="order-header">
+              <h3 class="font-rowan fw-bold mb-0">Current Order</h3>
+              <div id="selected-table-info" class="text-muted mt-1">Select a table</div>
+            </div>
+
+            <div id="order-content">
+              <!-- Menu & Cart -->
+              <div id="menu-section" class="d-none">
+                <div class="menu-categories mb-3">
+                  <div id="category-tabs" class="d-flex gap-2 flex-wrap"></div>
+                </div>
+                <div id="menu-items" class="menu-items-grid"></div>
+              </div>
+
+              <!-- Cart -->
+              <div id="cart-section" class="cart-section">
+                <h5 class="fw-bold mb-3">Order Items</h5>
+                <div id="cart-items" class="cart-items-list">
+                  <p class="text-muted text-center py-4">No items added</p>
+                </div>
+                
+                <div class="cart-totals">
+                  <div class="d-flex justify-content-between">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">₹0.00</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Tax (5%):</span>
+                    <span id="cart-tax">₹0.00</span>
+                  </div>
+                  <div class="d-flex justify-content-between fw-bold fs-5">
+                    <span>Total:</span>
+                    <span id="cart-total">₹0.00</span>
+                  </div>
+                </div>
+
+                <button id="generate-bill-btn" class="btn btn-success w-100 mt-3 d-none" onclick="generateBill()">
+                  <i class="bi bi-receipt"></i> Generate Bill
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts/pos.js"></script>
+</body>
+</html>

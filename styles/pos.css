@@ -1,0 +1,334 @@
+/* FireFork POS System Styles */
+
+body {
+  background: #F8F9FA;
+  overflow-x: hidden;
+}
+
+.pos-header {
+  background: white;
+  border-bottom: 3px solid var(--brand-orange);
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.filter-section {
+  background: white;
+  padding: 1.5rem 0;
+  margin-top: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.btn-brand-orange {
+  background: var(--brand-orange);
+  color: white;
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-brand-orange:hover {
+  background: #E62E00;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 53, 0, 0.3);
+}
+
+/* Table Cards Grid */
+.tables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.table-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid #E5E7EB;
+  position: relative;
+}
+
+.table-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.table-card.available {
+  border-color: #22C55E;
+}
+
+.table-card.occupied {
+  border-color: var(--brand-orange);
+  background: #FFF5F0;
+}
+
+.table-card.selected {
+  border-color: var(--brand-dark);
+  box-shadow: 0 0 0 3px rgba(53, 22, 27, 0.2);
+}
+
+.table-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.table-code {
+  font-family: 'Caesar Dressing', cursive;
+  font-size: 1.5rem;
+  color: var(--brand-dark);
+}
+
+.table-status-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.table-status-badge.available {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.table-status-badge.occupied {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+.table-info {
+  font-size: 0.875rem;
+  color: #6B7280;
+}
+
+.table-info i {
+  margin-right: 0.25rem;
+}
+
+.customer-name {
+  font-weight: 600;
+  color: var(--brand-dark);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Order Panel */
+.order-panel {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+}
+
+.order-header {
+  border-bottom: 2px solid #E5E7EB;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Menu Categories */
+.menu-categories {
+  border-bottom: 1px solid #E5E7EB;
+  padding-bottom: 1rem;
+}
+
+.category-tab {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 2px solid #E5E7EB;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.category-tab:hover {
+  border-color: var(--brand-orange);
+}
+
+.category-tab.active {
+  background: var(--brand-orange);
+  color: white;
+  border-color: var(--brand-orange);
+}
+
+/* Menu Items */
+.menu-items-grid {
+  display: grid;
+  gap: 0.75rem;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  padding-right: 0.5rem;
+}
+
+.menu-item-card {
+  background: #F9FAFB;
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.menu-item-card:hover {
+  background: #F3F4F6;
+  border-color: var(--brand-orange);
+}
+
+.menu-item-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--brand-dark);
+  margin-bottom: 0.25rem;
+}
+
+.menu-item-price {
+  color: var(--brand-orange);
+  font-weight: 700;
+}
+
+.menu-item-veg-badge {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid;
+  border-radius: 2px;
+  position: relative;
+  margin-left: 0.5rem;
+}
+
+.menu-item-veg-badge.veg {
+  border-color: #22C55E;
+}
+
+.menu-item-veg-badge.veg::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #22C55E;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menu-item-veg-badge.non-veg {
+  border-color: #EF4444;
+}
+
+.menu-item-veg-badge.non-veg::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #EF4444;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Cart */
+.cart-section {
+  margin-top: 1rem;
+}
+
+.cart-items-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #F9FAFB;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--brand-dark);
+}
+
+.cart-item-price {
+  font-size: 0.85rem;
+  color: #6B7280;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--brand-orange);
+  background: white;
+  color: var(--brand-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 700;
+}
+
+.qty-btn:hover {
+  background: var(--brand-orange);
+  color: white;
+}
+
+.qty-display {
+  font-weight: 700;
+  min-width: 30px;
+  text-align: center;
+}
+
+.cart-totals {
+  border-top: 2px solid #E5E7EB;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.cart-totals > div {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .order-panel {
+    position: static;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .tables-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}

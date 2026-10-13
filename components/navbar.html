@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid px-3 px-md-5">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="assets/images/icons/iconCRUVE.png" alt="FireFork Logo" style="height: 48px; width: auto; border-radius: 30%; margin-right: 0.75rem;">
+            <span class="font-caesar" style="font-size: 1.75rem; color: #FF3500;">FIREFORK</span>
+        </a>
+
+        <div class="d-flex align-items-center order-lg-last gap-2 gap-md-4">
+            <div class="toggle-container" onclick="toggleMode()">
+                <div id="toggle-slider"></div>
+                <div class="w-100 d-flex justify-content-between px-2 position-relative z-10 text-center" style="font-size: 9px; font-weight: 900; pointer-events: none;">
+                    <span id="label-non-veg" class="toggle-text flex-fill" style="color: #35161B; padding-right: 26%;">NON-VEG</span>
+                    <span id="label-veg" class="toggle-text flex-fill" style="color: #35161B;">VEG</span>
+                </div>
+            </div>
+
+            <a href="form.html" class="cta-button d-none d-lg-block text-white text-decoration-none" style="background: var(--brand-dark); padding: 10px 20px; border-radius: 50px; font-weight: 700;">BOOK NOW</a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#fireNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse justify-content-center" style="margin-left: 9%;" id="fireNav">
+            <ul class="navbar-nav gap-lg-4 mt-5 mt-lg-0 text-center">
+                <li class="nav-item"><a class="nav-link nav-home" href="index.html">HOME</a></li>
+                <li class="nav-item"><a class="nav-link nav-menu" href="menu.html">MENU</a></li>
+                <li class="nav-item"><a class="nav-link nav-story" href="story.html">STORY</a></li>
+                <li class="nav-item"><a class="nav-link nav-experience" href="experience.html">EXPERIENCE</a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="form.html">BOOK NOW</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

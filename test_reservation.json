@@ -1,0 +1,9 @@
+{
+  "name": "Test User",
+  "phone": "9876543210",
+  "bookingDate": "2026-02-21",
+  "bookingTime": "18:00",
+  "partySize": 4,
+  "dietaryPreference": "Vegetarian",
+  "specialRequests": "Window seat please"
+}

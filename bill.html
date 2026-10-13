@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FireFork | Bill</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/common.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .bill-container {
+      background: white;
+      max-width: 500px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .bill-header {
+      background: var(--brand-orange);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .bill-header h1 {
+      font-family: 'Caesar Dressing', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+    }
+
+    .bill-body {
+      padding: 2rem;
+    }
+
+    .bill-info {
+      border-bottom: 2px dashed #E5E7EB;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .bill-info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .bill-items {
+      margin-bottom: 1.5rem;
+    }
+
+    .bill-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #F3F4F6;
+    }
+
+    .bill-item-name {
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .bill-item-qty {
+      color: #6B7280;
+      margin: 0 1rem;
+    }
+
+    .bill-item-price {
+      font-weight: 600;
+      color: var(--brand-orange);
+    }
+
+    .bill-totals {
+      border-top: 2px solid #E5E7EB;
+      padding-top: 1rem;
+    }
+
+    .bill-total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .bill-total-row.grand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--brand-orange);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--brand-orange);
+    }
+
+    .bill-footer {
+      background: #F9FAFB;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .thank-you {
+      font-family: 'Caesar Dressing', cursive;
+      font-size: 2rem;
+      color: var(--brand-orange);
+      margin-bottom: 1rem;
+    }
+
+    .visit-again {
+      color: #6B7280;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-return {
+      background: var(--brand-dark);
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .btn-return:hover {
+      background: var(--brand-orange);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 53, 0, 0.3);
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+      .bill-container {
+        box-shadow: none;
+      }
+      .btn-return {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bill-container">
+    <div class="bill-header">
+      <h1>FIREFORK</h1>
+      <p class="mb-0">Where Flame Meets Flavor</p>
+    </div>
+
+    <div class="bill-body">
+      <div class="bill-info">
+        <div class="bill-info-row">
+          <span class="text-muted">Table:</span>
+          <strong id="bill-table">-</strong>
+        </div>
+        <div class="bill-info-row">
+          <span class="text-muted">Guest:</span>
+          <strong id="bill-customer">-</strong>
+        </div>
+        <div class="bill-info-row">
+          <span class="text-muted">Date:</span>
+          <strong id="bill-date">-</strong>
+        </div>
+        <div class="bill-info-row">
+          <span class="text-muted">Time:</span>
+          <strong id="bill-time">-</strong>
+        </div>
+      </div>
+
+      <div class="bill-items" id="bill-items">
+        <!-- Items will be injected here -->
+      </div>
+
+      <div class="bill-totals">
+        <div class="bill-total-row">
+          <span>Subtotal:</span>
+          <span id="bill-subtotal">₹0.00</span>
+        </div>
+        <div class="bill-total-row">
+          <span>Tax (5%):</span>
+          <span id="bill-tax">₹0.00</span>
+        </div>
+        <div class="bill-total-row grand">
+          <span>TOTAL:</span>
+          <span id="bill-total">₹0.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bill-footer">
+      <div class="thank-you">THANK YOU!</div>
+      <div class="visit-again">We hope to see you again soon</div>
+      <a href="pos.html" class="btn-return">
+        <i class="bi bi-arrow-left"></i> Return to POS
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Load bill data from localStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      const billData = JSON.parse(localStorage.getItem('firefork_bill') || '{}');
+      
+      if (!billData.tableCode) {
+        window.location.href = 'pos.html';
+        return;
+      }
+
+      // Populate bill
+      document.getElementById('bill-table').textContent = billData.tableCode;
+      document.getElementById('bill-customer').textContent = billData.customerName || 'Guest';
+      
+      const now = new Date();
+      document.getElementById('bill-date').textContent = now.toLocaleDateString('en-IN');
+      document.getElementById('bill-time').textContent = now.toLocaleTimeString('en-IN', { 
+        hour: '2-digit', 
+        minute: '2-digit' 
+      });
+
+      // Render items
+      const itemsContainer = document.getElementById('bill-items');
+      itemsContainer.innerHTML = '';
+      
+      billData.items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'bill-item';
+        div.innerHTML = `
+          <div class="bill-item-name">${item.name}</div>
+          <div class="bill-item-qty">× ${item.quantity}</div>
+          <div class="bill-item-price">₹${(item.price * item.quantity).toFixed(2)}</div>
+        `;
+        itemsContainer.appendChild(div);
+      });
+
+      // Totals
+      document.getElementById('bill-subtotal').textContent = `₹${billData.subtotal.toFixed(2)}`;
+      document.getElementById('bill-tax').textContent = `₹${billData.tax.toFixed(2)}`;
+      document.getElementById('bill-total').textContent = `₹${billData.total.toFixed(2)}`;
+
+      // Clear localStorage after 5 seconds
+      setTimeout(() => {
+        localStorage.removeItem('firefork_bill');
+      }, 5000);
+    });
+  </script>
+</body>
+</html>

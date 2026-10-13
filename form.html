@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FireFork | Reserve Your Table</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&family=Inter:wght@300;400;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/common.css">
+  <style>
+    body {
+      background: #FCFCFC;
+    }
+
+    .form-section {
+      background: white;
+      min-height: 100vh;
+      padding: 80px 0;
+    }
+
+    .form-flame-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: var(--brand-orange);
+      clip-path: polygon(0% 0%, 5% 40%, 10% 10%, 15% 60%, 20% 20%, 25% 80%, 30% 30%, 35% 90%, 40% 40%, 45% 100%, 50% 50%, 55% 100%, 60% 40%, 65% 90%, 70% 30%, 75% 80%, 80% 20%, 85% 60%, 90% 10%, 95% 40%, 100% 0%);
+      transition: background-color 0.5s ease;
+    }
+
+    body.veg-mode .form-flame-top {
+      background: var(--brand-green);
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      padding: 50px 40px;
+      border: 2px solid #e5e7eb;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 30px 20px;
+        border-radius: 16px;
+      }
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .form-title {
+      font-family: 'Caesar Dressing', cursive;
+      font-size: 3rem;
+      color: var(--brand-orange);
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+      transition: color 0.5s ease;
+    }
+
+    body.veg-mode .form-title {
+      color: var(--brand-green);
+    }
+
+    @media (max-width: 768px) {
+      .form-title {
+        font-size: 2rem;
+      }
+    }
+
+    .form-subtitle {
+      font-family: 'Rowan', sans-serif;
+      font-size: 1rem;
+      color: #666;
+      margin: 0;
+    }
+
+    .booking-form {
+      margin-top: 30px;
+    }
+
+    .form-label {
+      font-family: 'Rowan', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #35161B;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-label i {
+      color: var(--brand-orange);
+      transition: color 0.5s ease;
+    }
+
+    body.veg-mode .form-label i {
+      color: var(--brand-green);
+    }
+
+    .form-control {
+      background: white;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-family: 'Rowan', sans-serif;
+      font-size: 1rem;
+      color: #35161B;
+      transition: all 0.3s ease;
+    }
+
+    .form-control::placeholder {
+      color: #9ca3af;
+    }
+
+    .form-control:focus {
+      background: white;
+      border-color: var(--brand-orange);
+      box-shadow: 0 0 0 3px rgba(255, 53, 0, 0.1);
+      outline: none;
+      color: #35161B;
+    }
+
+    body.veg-mode .form-control:focus {
+      border-color: var(--brand-green);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+    }
+
+    .form-text {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    .submit-button {
+      width: 100%;
+      background: var(--brand-orange);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 18px 32px;
+      font-family: 'Rowan', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 30px;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 53, 0, 0.3);
+    }
+
+    .submit-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    body.veg-mode .submit-button {
+      background: var(--brand-green);
+    }
+
+    body.veg-mode .submit-button:hover {
+      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+    }
+
+    .btn-loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .alert-message {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 20px;
+      border-radius: 16px;
+      margin-top: 30px;
+      font-family: 'Rowan', sans-serif;
+      animation: slideDown 0.4s ease;
+      border: 2px solid;
+    }
+
+    .alert-message i {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .success-message {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: #22C55E;
+      color: #166534;
+    }
+
+    .success-message strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      color: #22C55E;
+    }
+
+    .success-message p {
+      color: #666;
+    }
+
+    .error-message {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .error-message strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      color: #ef4444;
+    }
+
+    .error-message p {
+      color: #666;
+    }
+
+    /* Availability Indicator */
+    .availability-indicator {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      background: #F9FAFB;
+      border: 2px solid #E5E7EB;
+      animation: slideDown 0.3s ease;
+    }
+
+    .availability-status {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .availability-status.available {
+      background: #DCFCE7;
+      color: #22C55E;
+    }
+
+    .availability-status.unavailable {
+      background: #FEE2E2;
+      color: #EF4444;
+    }
+
+    .availability-status.limited {
+      background: #FEF3C7;
+      color: #F59E0B;
+    }
+
+    .availability-text {
+      font-family: 'Rowan', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .availability-text.text-success {
+      color: #22C55E;
+    }
+
+    .availability-text.text-danger {
+      color: #EF4444;
+    }
+
+    .availability-text.text-warning {
+      color: #F59E0B;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .form-section {
+        padding: 60px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <section class="form-section">
+        <div class="form-flame-top"></div>
+        
+        <div class="container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h1 class="form-title">RESERVE YOUR TABLE</h1>
+                    <p class="form-subtitle">Experience the perfect harmony of flame-kissed flavors</p>
+                </div>
+
+                <!-- Booking Form -->
+                <form id="booking-form" class="booking-form">
+                    <div class="row g-4">
+                        <!-- Guest Name -->
+                        <div class="col-md-6">
+                            <label for="guest-name" class="form-label">
+                                <i class="bi bi-person-fill me-2"></i>Full Name
+                            </label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="guest-name" 
+                                name="guestName"
+                                placeholder="Enter your full name" 
+                                required
+                                minlength="2"
+                                maxlength="120"
+                            >
+                        </div>
+
+                        <!-- Mobile Number -->
+                        <div class="col-md-6">
+                            <label for="mobile-number" class="form-label">
+                                <i class="bi bi-telephone-fill me-2"></i>Mobile Number
+                            </label>
+                            <input 
+                                type="tel" 
+                                class="form-control" 
+                                id="mobile-number" 
+                                name="mobileNumber"
+                                placeholder="+91 XXXXX XXXXX" 
+                                required
+                                pattern="[+]?[0-9]{10,15}"
+                            >
+                        </div>
+
+                        <!-- Booking Date -->
+                        <div class="col-md-6">
+                            <label for="booking-date" class="form-label">
+                                <i class="bi bi-calendar-fill me-2"></i>Date
+                            </label>
+                            <input 
+                                type="date" 
+                                class="form-control" 
+                                id="booking-date" 
+                                name="bookingDate"
+                                required
+                            >
+                        </div>
+
+                        <!-- Booking Time -->
+                        <div class="col-md-6">
+                            <label for="booking-time" class="form-label">
+                                <i class="bi bi-clock-fill me-2"></i>Time
+                            </label>
+                            <select 
+                                class="form-control" 
+                                id="booking-time" 
+                                name="bookingTime"
+                                required
+                            >
+                                <option value="">Select time slot</option>
+                            </select>
+                        </div>
+
+                        <!-- Party Size -->
+                        <div class="col-md-6">
+                            <label for="party-size" class="form-label">
+                                <i class="bi bi-people-fill me-2"></i>Number of Guests
+                            </label>
+                            <select 
+                                class="form-control" 
+                                id="party-size" 
+                                name="partySize"
+                                required
+                            >
+                                <option value="">Select party size</option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6 Guests</option>
+                                <option value="7">7 Guests</option>
+                                <option value="8">8 Guests</option>
+                                <option value="9">9 Guests</option>
+                                <option value="10">10+ Guests</option>
+                            </select>
+                        </div>
+
+                        <!-- Dietary Preference -->
+                        <div class="col-md-6">
+                            <label for="dietary-preference" class="form-label">
+                                <i class="bi bi-egg-fill me-2"></i>Dietary Preference
+                            </label>
+                            <select 
+                                class="form-control" 
+                                id="dietary-preference" 
+                                name="dietaryPreference"
+                            >
+                                <option value="">No preference</option>
+                                <option value="Vegetarian">Vegetarian</option>
+                                <option value="Non-Vegetarian">Non-Vegetarian</option>
+                                <option value="Vegan">Vegan</option>
+                                <option value="Gluten-Free">Gluten-Free</option>
+                            </select>
+                        </div>
+
+                        <!-- Special Requests -->
+                        <div class="col-12">
+                            <label for="special-requests" class="form-label">
+                                <i class="bi bi-chat-left-text-fill me-2"></i>Special Requests (Optional)
+                            </label>
+                            <textarea 
+                                class="form-control" 
+                                id="special-requests" 
+                                name="specialRequests"
+                                rows="3" 
+                                placeholder="Any special requirements or occasions?"
+                                maxlength="500"
+                            ></textarea>
+                            <div class="form-text">Maximum 500 characters</div>
+                        </div>
+                    </div>
+
+                    <!-- Availability Indicator -->
+                    <div id="availability-indicator" class="availability-indicator d-none">
+                        <div class="availability-status"></div>
+                        <span class="availability-text"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-button" id="submit-btn">
+                        <span class="btn-text">CONFIRM RESERVATION</span>
+                        <span class="btn-loader d-none">
+                            <span class="spinner-border spinner-border-sm me-2"></span>
+                            Processing...
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Success Message -->
+                <div id="success-message" class="alert-message success-message d-none">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    <div>
+                        <strong>Reservation Confirmed!</strong>
+                        <p class="mb-0">We've sent a confirmation to your mobile number.</p>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message" class="alert-message error-message d-none">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    <div>
+                        <strong>Booking Failed</strong>
+                        <p class="mb-0" id="error-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/components.js"></script>
+    <script src="scripts/common.js" defer></script>
+    <script src="scripts/form.js" defer></script>
+</body>
+</html>

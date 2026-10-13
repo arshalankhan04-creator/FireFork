@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireFork | The Menu</title>
+    
+    <!-- 1. SAME EXTERNAL RESOURCES -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/menu.css">
+
+</head>
+<body>
+
+    <!-- Cursor Follower Element -->
+    <div id="cursor-image-preview"></div>
+
+    <div id="navbar-placeholder"></div>
+
+    <!-- MENU PAGE HERO -->
+    <section class="menu-page-hero">
+        <div class="menu-bg-pattern"></div>
+        <h1 class="menu-hero-text" id="page-title">FORGED IN FLAME</h1>
+    </section>
+
+    <!-- STICKY CATEGORY NAV -->
+    <div class="menu-sub-nav">
+        <div class="container d-flex justify-content-center gap-3">
+            <span class="category-pill active" onclick="scrollToSection('starters', this)">STARTERS</span>
+            <span class="category-pill" onclick="scrollToSection('mains', this)">MAINS</span>
+            <span class="category-pill" onclick="scrollToSection('sides', this)">SIDES & SAUCES</span>
+            <span class="category-pill" onclick="scrollToSection('desserts', this)">SWEET ENDINGS</span>
+        </div>
+    </div>
+
+    <!-- MENU CONTENT -->
+    <div class="container menu-section-content">
+        
+        <!-- STARTERS -->
+        <div id="starters">
+            <h2 class="menu-category-title">Starters & Small Plates</h2>
+            
+            <!-- Non-Veg Container -->
+            <div class="non-veg-container">
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Bone Marrow Brulée.png">Bone Marrow Brulée</div>
+                        <p class="menu-item-desc">Roasted marrow with a chili-garlic crust, served with sourdough crostini.</p>
+                    </div>
+                    <span class="menu-item-price">₹1,500</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Wagyu Carpaccio (Imported).png">Wagyu Carpaccio (Imported)</div>
+                        <p class="menu-item-desc">Paper-thin slices, caper berries, Grana Padano, and a drizzle of truffle oil.</p>
+                    </div>
+                    <span class="menu-item-price">₹2,000</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Lamb Riblets.png">Lamb Riblets</div>
+                        <p class="menu-item-desc">Slow-cooked for 12 hours, glazed in a spicy tamarind and jaggery reduction.</p>
+                    </div>
+                    <span class="menu-item-price">₹1,650</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Charred Octopus.png">Charred Octopus</div>
+                        <p class="menu-item-desc">Wood-fired with chorizo butter and a chickpea purée.</p>
+                    </div>
+                    <span class="menu-item-price">₹1,850</span>
+                </div>
+            </div>
+
+            <!-- Veg Container (Hidden by default) -->
+            <div class="veg-container" style="display: none;">
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Smoked Burrata.png">Smoked Burrata</div>
+                        <p class="menu-item-desc">Coal-fired heirloom tomatoes, basil pesto, and balsamic pearls.</p>
+                    </div>
+                    <span class="menu-item-price">₹1,350</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Truffle Mushroom Pâté.png">Truffle Mushroom Pâté</div>
+                        <p class="menu-item-desc">Creamy forest mushrooms served with grilled baguette and onion jam.</p>
+                    </div>
+                    <span class="menu-item-price">₹1,150</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Cauliflower Wings.png">Cauliflower "Wings"</div>
+                        <p class="menu-item-desc">Tempura battered, tossed in a fermented chili and lime glaze.</p>
+                    </div>
+                    <span class="menu-item-price">₹1,000</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Hearth-Roasted Asparagus.png">Hearth-Roasted Asparagus</div>
+                        <p class="menu-item-desc">Topped with toasted hazelnuts and a lemon-tahini dressing.</p>
+                    </div>
+                    <span class="menu-item-price">₹1,100</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLAME SEPARATOR -->
+        <div class="flame-separator-top"></div>
+
+        <!-- MAINS -->
+        <div id="mains">
+            <h2 class="menu-category-title">Mains</h2>
+
+            <!-- Non-Veg Container -->
+            <div class="non-veg-container">
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/The Signature Tenderloin (Buff).png">The Signature Tenderloin (Buff)</div>
+                        <p class="menu-item-desc">21-day dry-aged, grass-fed. Served with roasted garlic.</p>
+                    </div>
+                    <span class="menu-item-price">₹5,400</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Dukkah-Crusted Lamb Rack.png">Dukkah-Crusted Lamb Rack</div>
+                        <p class="menu-item-desc">New Zealand lamb chops with a Middle Eastern spice crust and mint jus.</p>
+                    </div>
+                    <span class="menu-item-price">₹4,000</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Smoked Spatchcock Chicken.png">Smoked Spatchcock Chicken</div>
+                        <p class="menu-item-desc">Half a bird marinated in peri-peri and rosemary, finished over charcoal.</p>
+                    </div>
+                    <span class="menu-item-price">₹2,650</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/The Iron T_Bone.png">The "Iron" T-Bone</div>
+                        <p class="menu-item-desc">A massive 600g cut for the serious carnivore, seared at 400°C.</p>
+                    </div>
+                    <span class="menu-item-price">₹6,000</span>
+                </div>
+            </div>
+
+            <!-- Veg Container -->
+            <div class="veg-container" style="display: none;">
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/The King Oyster Steak.png">The King Oyster Steak</div>
+                        <p class="menu-item-desc">Thick-cut mushroom "scallops" pan-seared in garlic butter and thyme.</p>
+                    </div>
+                    <span class="menu-item-price">₹2,350</span>
+                </div>
+                
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Tandoori Portobello Slab.png">Tandoori Portobello Slab</div>
+                        <p class="menu-item-desc">Large grilled mushrooms stuffed with herbed goat cheese.</p>
+                    </div>
+                    <span class="menu-item-price">₹2,150</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Cauliflower Steak (The OG).png">Cauliflower "Steak" (The OG)</div>
+                        <p class="menu-item-desc">A cross-section of cauliflower, charred and served over a bed of romesco sauce.</p>
+                    </div>
+                    <span class="menu-item-price">₹2,000</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Cottage Cheese Ribs.png">Cottage Cheese "Ribs"</div>
+                        <p class="menu-item-desc">Compressed paneer blocks, hickory-smoked and basted in a BBQ-makhani fusion sauce.</p>
+                    </div>
+                    <span class="menu-item-price">₹2,100</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flame-separator-top"></div>
+
+        <!-- SIDES & SAUCES -->
+        <div id="sides">
+            <h2 class="menu-category-title">Sides & Sauces</h2>
+            
+            <!-- Non-Veg Container -->
+            <div class="non-veg-container">
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Truffle Parm Fries.png">Truffle Parm Fries</div>
+                        <p class="menu-item-desc">Hand-cut fries tossed with truffle oil and Parmesan.</p>
+                    </div>
+                    <span class="menu-item-price">₹750</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Bone Marrow Mash.png">Bone Marrow Mash</div>
+                        <p class="menu-item-desc">Creamy mashed potatoes enriched with roasted bone marrow.</p>
+                    </div>
+                    <span class="menu-item-price">₹900</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Creamed Spinach with Nutmeg.png">Creamed Spinach with Nutmeg</div>
+                        <p class="menu-item-desc">Classic steakhouse side with a hint of fresh nutmeg.</p>
+                    </div>
+                    <span class="menu-item-price">₹650</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Sauces.png">Sauces</div>
+                        <p class="menu-item-desc">Cognac Peppercorn, Red Wine Jus, Bearnaise, Bhut Jolokia (Ghost Pepper) Butter.</p>
+                    </div>
+                    <span class="menu-item-price">₹350</span>
+                </div>
+            </div>
+
+            <!-- Veg Container -->
+            <div class="veg-container" style="display: none;">
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Gunpowder Baby Potatoes.png">Gunpowder Baby Potatoes</div>
+                        <p class="menu-item-desc">Crispy roasted potatoes tossed in South Indian spice blend.</p>
+                    </div>
+                    <span class="menu-item-price">₹650</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Honey-Glazed Carrots.png">Honey-Glazed Carrots</div>
+                        <p class="menu-item-desc">Roasted heritage carrots with wildflower honey and thyme.</p>
+                    </div>
+                    <span class="menu-item-price">₹750</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Mac & Cheese.png">Mac & Cheese</div>
+                        <p class="menu-item-desc">Three-cheese blend with a crusty herb crumble topping.</p>
+                    </div>
+                    <span class="menu-item-price">₹850</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Sauces_veg.png">Sauces</div>
+                        <p class="menu-item-desc">Chimichurri, Mushroom Gravy, Lemon Herb Butter, Roasted Garlic Aioli.</p>
+                    </div>
+                    <span class="menu-item-price">₹350</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flame-separator-top"></div>
+
+        <!-- DESSERTS (Shared) -->
+        <div id="desserts">
+            <h2 class="menu-category-title">Sweet Endings</h2>
+            
+            <!-- Non-Veg Container -->
+            <div class="non-veg-container">
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Dark Chocolate Fondant.png">Dark Chocolate Fondant</div>
+                        <p class="menu-item-desc">With a molten salted caramel center and vanilla bean gelato.</p>
+                    </div>
+                    <span class="menu-item-price">₹1,150</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Whiskey Bread Pudding.png">Whiskey Bread Pudding</div>
+                        <p class="menu-item-desc">Brioche soaked in custard and topped with a bourbon-toffee glaze.</p>
+                    </div>
+                    <span class="menu-item-price">₹1,100</span>
+                </div>
+            </div>
+
+            <!-- Veg Container -->
+            <div class="veg-container" style="display: none;">
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Grilled Pineapple Tarte Tatin.png">Grilled Pineapple Tarte Tatin</div>
+                        <p class="menu-item-desc">Caramelized pineapple on puff pastry with coconut sorbet.</p>
+                    </div>
+                    <span class="menu-item-price">₹1,000</span>
+                </div>
+
+                <div class="menu-item-row">
+                    <div class="menu-item-info">
+                        <div class="menu-item-title" data-img="assets/images/food/Saffron & Pistachio Cheesecake.png">Saffron & Pistachio Cheesecake</div>
+                        <p class="menu-item-desc">A deconstructed baked cheesecake with an Indian floral twist.</p>
+                    </div>
+                    <span class="menu-item-price">₹1,100</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="flame-separator"></div>
+    <div id="footer-placeholder"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/components.js"></script>
+    <script src="scripts/common.js" defer></script>
+    <script src="scripts/menu.js" defer></script>
+</body>
+</html>
