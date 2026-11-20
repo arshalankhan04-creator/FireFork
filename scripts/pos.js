@@ -2,7 +2,7 @@
  * FireFork POS System
  */
 
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = (window.FIREFORK_CONFIG && window.FIREFORK_CONFIG.apiBase) || 'http://localhost:3000/api';
 const DEFAULT_PIN = '1234';
 
 let currentDate = null;

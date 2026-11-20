@@ -62,7 +62,7 @@
     }
 
     function initBookingForm() {
-        const API_BASE_URL = 'http://localhost:3000/api';
+        const API_BASE_URL = (window.FIREFORK_CONFIG && window.FIREFORK_CONFIG.apiBase) || 'http://localhost:3000/api';
         const bookingForm = document.getElementById('booking-form');
         const successMessage = document.getElementById('success-message');
         const errorMessage = document.getElementById('error-message');
