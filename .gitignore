@@ -34,3 +34,10 @@ Desktop.ini
 *.sqlite
 *.sqlite3
 *.db
+
+# SQLite database files
+backend/firefork.db
+backend/firefork.db-shm
+backend/firefork.db-wal
+*.db-shm
+*.db-wal

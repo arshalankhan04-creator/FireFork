@@ -1,0 +1,54 @@
+# render.yaml — Render.com deployment configuration
+# 
+# SETUP INSTRUCTIONS:
+# 1. Push this repo to GitHub
+# 2. Go to render.com → New → Blueprint → connect your repo
+# 3. After deploy, set these env vars in the firefork-api service dashboard:
+#    - FRONTEND_URL: your Render static site URL (e.g. https://firefork.onrender.com)
+#    - CORS_ALLOWED_ORIGINS: same URL as FRONTEND_URL
+# 4. Update scripts/config.js apiBase to your firefork-api service URL + /api
+#    e.g. 'https://firefork-api.onrender.com/api'
+# 5. Redeploy frontend after updating scripts/config.js
+
+services:
+  # ── Backend API (Node.js Web Service) ──────────────────────────────────────
+  - type: web
+    name: firefork-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    # NOTE: Persistent disk requires a paid Render plan.
+    # On the free tier, SQLite data resets on each deploy/restart.
+    # For a persistent disk, uncomment the disk block below and upgrade your plan.
+    # disk:
+    #   name: firefork-data
+    #   mountPath: /var/data
+    #   sizeGB: 1
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+      - key: DB_PATH
+        value: /var/data/firefork.db   # Only used if disk is enabled above
+      - key: FRONTEND_URL
+        sync: false   # Set in Render dashboard after first deploy
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false   # Set in Render dashboard after first deploy
+
+  # ── Frontend (Static Site) ─────────────────────────────────────────────────
+  - type: web
+    name: firefork-frontend
+    runtime: static
+    rootDir: .
+    buildCommand: ""
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=3600
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
