@@ -4,7 +4,7 @@ const { Client } = require('pg');
 const { config } = require('../config');
 
 function readSql(relPathFromBackend) {
-  const p = path.resolve(__dirname, '..', '..', relPathFromBackend);
+  const p = path.resolve(__dirname, '..', relPathFromBackend);
   return fs.readFileSync(p, 'utf8');
 }
 
