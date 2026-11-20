@@ -8,5 +8,5 @@
  * This file is committed to git. Update it when deploying to production.
  */
 window.FIREFORK_CONFIG = {
-  apiBase: 'http://localhost:3000/api'
+  apiBase: 'https://firefork-api.onrender.com/api'
 };
