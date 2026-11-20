@@ -9,10 +9,10 @@
     "init-db": "node scripts/init-db.js"
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
     "better-sqlite3": "^12.6.2",
-    "dotenv": "^16.6.1",
-    "pg": "^8.16.3",
-    "sqlite3": "^5.1.7"
+    "dotenv": "^16.6.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

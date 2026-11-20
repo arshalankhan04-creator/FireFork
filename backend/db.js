@@ -1,6 +1,4 @@
-// Use SQLite for simplicity
-console.log('🗄️  Using SQLite database');
+// SQLite database module
 const dbModule = require('./db-sqlite');
 
 module.exports = dbModule;
-
