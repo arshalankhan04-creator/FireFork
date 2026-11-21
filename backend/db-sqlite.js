@@ -39,14 +39,22 @@ function initSchema() {
       FOREIGN KEY (table_id) REFERENCES restaurant_tables(id)
     );
 
+    CREATE TABLE IF NOT EXISTS categories (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT UNIQUE NOT NULL,
+      display_order INTEGER DEFAULT 0
+    );
+
     CREATE TABLE IF NOT EXISTS menu_items (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
-      category TEXT NOT NULL,
+      category_id INTEGER NOT NULL,
       price REAL NOT NULL CHECK(price >= 0),
       description TEXT,
+      is_veg INTEGER DEFAULT 0,
       is_available INTEGER DEFAULT 1,
-      image_url TEXT
+      image_url TEXT,
+      FOREIGN KEY (category_id) REFERENCES categories(id)
     );
 
     CREATE TABLE IF NOT EXISTS orders (
@@ -89,25 +97,44 @@ function initSchema() {
     tables.forEach(([code, cap]) => insertTable.run(code, cap));
   }
 
+  // Seed categories if empty
+  const catCount = db.prepare('SELECT COUNT(*) as count FROM categories').get();
+  if (catCount.count === 0) {
+    const insertCat = db.prepare('INSERT INTO categories (name, display_order) VALUES (?, ?)');
+    [
+      ['Starters', 1],
+      ['Mains',    2],
+      ['Sides',    3],
+      ['Desserts', 4]
+    ].forEach(([name, order]) => insertCat.run(name, order));
+  }
+
   // Seed menu if empty
   const menuCount = db.prepare('SELECT COUNT(*) as count FROM menu_items').get();
   if (menuCount.count === 0) {
-    const insertMenu = db.prepare('INSERT INTO menu_items (name, category, price, description, image_url) VALUES (?, ?, ?, ?, ?)');
+    const getCat = db.prepare('SELECT id FROM categories WHERE name = ?');
+    const insertMenu = db.prepare(
+      'INSERT INTO menu_items (name, category_id, price, description, is_veg, image_url) VALUES (?, ?, ?, ?, ?, ?)'
+    );
     const menu = [
-      ['Bone Marrow Brulée', 'Starters', 12.99, 'Torched bone marrow with herb crust', 'assets/images/food/Bone Marrow Brulée.png'],
-      ['Charred Octopus', 'Starters', 15.99, 'Grilled octopus with lemon', 'assets/images/food/Charred Octopus.png'],
-      ['Cauliflower Wings', 'Starters', 9.99, 'Crispy cauliflower bites', 'assets/images/food/Cauliflower Wings.png'],
-      ['Dukkah-Crusted Lamb Rack', 'Mains', 32.99, 'Spiced lamb rack', 'assets/images/food/Dukkah-Crusted Lamb Rack.png'],
-      ['Lamb Riblets', 'Mains', 24.99, 'Tender lamb riblets', 'assets/images/food/Lamb Riblets.png'],
-      ['Cauliflower Steak (The OG)', 'Mains', 18.99, 'Signature cauliflower steak', 'assets/images/food/Cauliflower Steak (The OG).png'],
-      ['Cottage Cheese Ribs', 'Mains', 16.99, 'Grilled cottage cheese', 'assets/images/food/Cottage Cheese Ribs.png'],
-      ['Mac & Cheese', 'Sides', 8.99, 'Creamy mac and cheese', 'assets/images/food/Mac & Cheese.png'],
-      ['Gunpowder Baby Potatoes', 'Sides', 7.99, 'Spicy roasted potatoes', 'assets/images/food/Gunpowder Baby Potatoes.png'],
-      ['Creamed Spinach with Nutmeg', 'Sides', 6.99, 'Rich creamed spinach', 'assets/images/food/Creamed Spinach with Nutmeg.png'],
-      ['Dark Chocolate Fondant', 'Desserts', 10.99, 'Molten chocolate cake', 'assets/images/food/Dark Chocolate Fondant.png'],
-      ['Saffron & Pistachio Cheesecake', 'Desserts', 11.99, 'Exotic cheesecake', 'assets/images/food/Saffron & Pistachio Cheesecake.png']
+      // [name, category, price, description, is_veg, image]
+      ['Bone Marrow Brulée',          'Starters', 12.99, 'Torched bone marrow with herb crust',  0, 'assets/images/food/Bone Marrow Brulée.png'],
+      ['Charred Octopus',             'Starters', 15.99, 'Grilled octopus with lemon',            0, 'assets/images/food/Charred Octopus.png'],
+      ['Cauliflower Wings',           'Starters',  9.99, 'Crispy cauliflower bites',              1, 'assets/images/food/Cauliflower Wings.png'],
+      ['Dukkah-Crusted Lamb Rack',    'Mains',    32.99, 'Spiced lamb rack',                      0, 'assets/images/food/Dukkah-Crusted Lamb Rack.png'],
+      ['Lamb Riblets',                'Mains',    24.99, 'Tender lamb riblets',                   0, 'assets/images/food/Lamb Riblets.png'],
+      ['Cauliflower Steak (The OG)',  'Mains',    18.99, 'Signature cauliflower steak',           1, 'assets/images/food/Cauliflower Steak (The OG).png'],
+      ['Cottage Cheese Ribs',         'Mains',    16.99, 'Grilled cottage cheese',                1, 'assets/images/food/Cottage Cheese Ribs.png'],
+      ['Mac & Cheese',                'Sides',     8.99, 'Creamy mac and cheese',                 1, 'assets/images/food/Mac & Cheese.png'],
+      ['Gunpowder Baby Potatoes',     'Sides',     7.99, 'Spicy roasted potatoes',                1, 'assets/images/food/Gunpowder Baby Potatoes.png'],
+      ['Creamed Spinach with Nutmeg', 'Sides',     6.99, 'Rich creamed spinach',                  1, 'assets/images/food/Creamed Spinach with Nutmeg.png'],
+      ['Dark Chocolate Fondant',      'Desserts', 10.99, 'Molten chocolate cake',                 1, 'assets/images/food/Dark Chocolate Fondant.png'],
+      ['Saffron & Pistachio Cheesecake', 'Desserts', 11.99, 'Exotic cheesecake',                 1, 'assets/images/food/Saffron & Pistachio Cheesecake.png']
     ];
-    menu.forEach(item => insertMenu.run(...item));
+    menu.forEach(([name, cat, price, desc, isVeg, img]) => {
+      const category = getCat.get(cat);
+      if (category) insertMenu.run(name, category.id, price, desc, isVeg, img);
+    });
   }
 }
 

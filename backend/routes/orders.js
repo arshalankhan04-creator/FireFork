@@ -67,7 +67,7 @@ async function createOrUpdateOrder(req, res, body) {
         if (!menuItemId || !quantity || quantity < 1) continue;
 
         // Get menu item price
-        const menuSql = `SELECT price FROM menu_items WHERE id = $1 AND is_available = true`;
+        const menuSql = `SELECT price FROM menu_items WHERE id = $1 AND is_available = 1`;
         const menuResult = await client.query(menuSql, [menuItemId]);
         
         if (menuResult.rows.length === 0) continue;
